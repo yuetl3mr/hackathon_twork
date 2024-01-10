@@ -1,0 +1,21 @@
+.group_hover :hover {
+    color : #003B8C !important;
+    cursor: pointer;
+}
+
+.disappear {
+    display: none;
+}
+
+.choise:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.Ellipse46:hover {
+    opacity: 0.5;
+}
+
+.Ellipse47:hover {
+    opacity: 0.5;
+}
