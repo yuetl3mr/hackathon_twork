@@ -32,6 +32,3 @@ def process_input():
 if __name__ == '__main__':
     app.run(debug=True)
 
-# logFile = open('log.json', 'w')
-# print(response, file = logFile)
-# logFile.close()

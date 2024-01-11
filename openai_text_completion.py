@@ -17,7 +17,3 @@ response = client.chat.completions.create(
 )
 
 print(response.choices[0].message.content)
-
-# logFile = open('log.json', 'w')
-# print(response, file = logFile)
-# logFile.close()
