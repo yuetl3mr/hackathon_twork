@@ -1,0 +1,10 @@
+1. こんにちは (konnichiwa) - Xin chào
+2. ありがとう (arigatou) - Cảm ơn
+3. すみません (sumimasen) - Xin lỗi
+4. おはようございます (ohayou gozaimasu) - Chào buổi sáng
+5. いただきます (itadakimasu) - Xin được nhận
+6. ごめんなさい (gomen nasai) - Xin lỗi
+7. はい (hai) - Vâng
+8. いいえ (iie) - Không
+9. さようなら (sayounara) - Tạm biệt
+10. おやすみなさい (oyasumi nasai) - Chúc ngủ ngon
