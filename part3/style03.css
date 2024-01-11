@@ -19,3 +19,26 @@
 .Ellipse47:hover {
     opacity: 0.5;
 }
+
+  
+  /* Định nghĩa hiệu ứng biến mất và xuất hiện */
+  .fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+  }
+  
+  .fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+  }
+
+.incorrect-choice {
+    background: red !important;
+    transition: background-color 0.5s ease-out;
+  }
+/* Định nghĩa hiệu ứng màu xanh */
+.correct-choice {
+    background: green !important;
+    transition: background-color 0.5s ease-out;
+  }
+  

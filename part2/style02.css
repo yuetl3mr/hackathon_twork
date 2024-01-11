@@ -10,6 +10,7 @@
 
 .Blue {
     color: blue!important;
+    font-weight: 1000 !important;
 }
 
 .Text:hover {
@@ -27,8 +28,12 @@
     color: black !important;
   }
   
-  .Start li:hover {
+.Start li:hover {
     color: red !important; /* Change to the desired hover color */
     cursor: pointer;
-  }
+}
+
+.disappear {
+    display: none !important;
+}
   
