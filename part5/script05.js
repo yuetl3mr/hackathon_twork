@@ -4,8 +4,6 @@ const choises = document.querySelectorAll(".choise");
 const Question = document.querySelector(".Question");
 const nextPage = document.querySelector(".nextPage");
 const FlashChoose = document.querySelector(".FlashChoose");
-const TestChoose = document.querySelector(".TestChoose");
-const Test = document.querySelector(".Test");
 const Flashcards = document.querySelector(".Flashcards"); 
 const Questions = document.querySelector(".Questions");
 const Answers = document.querySelector(".Answers");
@@ -44,7 +42,9 @@ Ellipse46.onclick = function() {
             Rectangle133.classList.remove("correct-choice");
         })
     }
-    
+    Explanationinfo.classList.add("disappear");
+    Answers.classList.add("disappear");
+    Questions.classList.remove("disappear");
     if (currentText[0] <= questions.length) {
         Question.innerText = questions[currentText[0] - 1].nameQuestion;
         Answer.innerText = questions[currentText[0] - 1].answer;
@@ -53,7 +53,6 @@ Ellipse46.onclick = function() {
     if(currentText[0] > questions.length) {
         Question.innerText =  "THE FLASHCARDS HAS BEEN COMPLETED !";
         Answer.classList.add("disppear");
-
     }
 }
 
@@ -69,6 +68,10 @@ Ellipse47.onclick  = function() {
         // Update the text content
         textElement.innerText = currentText.join('/');
     }
+
+    Answers.classList.add("disappear");
+    Questions.classList.remove("disappear");
+    Explanationinfo.classList.add("disappear");
     if(currentText[0] <= questions.length) {
         Question.innerText = questions[currentText[0] - 1].nameQuestion;
         Answer.innerText = questions[currentText[0] - 1].answer;
@@ -103,26 +106,6 @@ function autoAdjustFontSize() {
   window.onload = autoAdjustFontSize;
 
 
-Test.onclick = function() {
-   TestChoose.style.background = "#003B8C";
-   FlashChoose.style.background = "white";
-}
-
-Flashcards.onclick = function() {
-    FlashChoose.style.background = "#003B8C";
-    TestChoose.style.background = "white";
-}
-
-FlashChoose.onclick = function() {
-    FlashChoose.style.background = "#003B8C";
-    TestChoose.style.background = "white";
-}
-
-TestChoose.onclick = function() {
-   TestChoose.style.background = "#003B8C";
-   FlashChoose.style.background = "white";
-}
-
 Answer.onclick = function() {
    
     Answers.classList.add("disappear");
@@ -133,6 +116,7 @@ Answer.onclick = function() {
         Answers.classList.remove("appear");
     }, 10000); // 500 milliseconds delay, adjust as needed
 }
+
 
 Question.onclick = function() {
     var textElement = document.querySelector(".nextPage");
@@ -146,7 +130,6 @@ Question.onclick = function() {
             Questions.classList.remove("appear");
         }, 10000); // 500 milliseconds delay, adjust as needed
     }   
-    
 }
 
 GetExplanation_btn.onclick = function() {
