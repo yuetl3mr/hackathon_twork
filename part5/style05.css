@@ -1,7 +1,9 @@
 body {
     background-color: #FAEED1;
 }
-
+html {
+    font-family: monospace !important;
+}
 .group_hover :hover {
     color : #003B8C !important;
     cursor: pointer;

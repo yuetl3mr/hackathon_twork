@@ -1,3 +1,6 @@
+body {
+  background-color: #FAEED1;
+}
 .group_hover :hover {
     color : #003B8C !important;
     cursor: pointer;
@@ -41,4 +44,3 @@
     background: green !important;
     transition: background-color 0.5s ease-out;
   }
-  
