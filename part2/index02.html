@@ -77,9 +77,16 @@
         <div class="Line8" style="width: 43px; height: 0px; left: 263.50px; top: 209px; position: absolute; transform: rotate(90deg); transform-origin: 0 0; border: 1px black solid"></div>
         <div class="Text Blue" style="width: 62px; height: 27px; left: 193px; top: 220px; position: absolute; color: black; font-size: 19px; font-family: Inter; font-weight: 400; word-wrap: break-word; cursor: pointer;">Text</div>
         <div class="Document" style="width: 97px; height: 27px; left: 280px; top: 220px; position: absolute; color: black; font-size: 19px; font-family: Inter; font-weight: 400; word-wrap: break-word; cursor: pointer;">Document</div>
-        <div class="Rectangle17" style="width: 975px; height: 446px; left: 156px; top: 274px; position: absolute; background: linear-gradient(161deg, #46AEFA 0%, rgba(213, 241, 243, 0) 100%); border-radius: 30px">
-            <textarea class="EnterYourPromtHere" style="width: 100%; height: 100%; box-sizing: border-box; padding: 10px; color: black; font-size: 16px; font-family: Inter; font-weight: 400; border: none; outline: none; background: transparent; resize: none; white-space: pre-line; word-wrap: break-word;" placeholder="Enter your prompt here..."></textarea>
-        </div>        
+        <div class="Rectangle17" style="width: 975px; height: 446px; left: 156px; top: 274px; position: absolute; background: linear-gradient(161deg, #46AEFA 0%, rgba(213, 241, 243, 0) 100%); border-radius: 30px; overflow: hidden;">
+          <textarea class="EnterYourPromtHere" style="width: 100%; height: 100%; box-sizing: border-box; padding: 10px; color: black; font-size: 16px; font-family: Inter; font-weight: 400; border: none; outline: none; background: transparent; resize: none; white-space: pre-line; word-wrap: break-word;" placeholder="Enter your prompt here..."></textarea>
+          <div class="Rectangle238" style="width: 182px; height: 74px; background: rgba(255, 255, 255, 0.58); border-radius: 15px; position:absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); overflow: hidden;">
+              <input type="file" id="fileInput" style="width: 100%; height: 100%; opacity: 0; position: absolute; top: 0; left: 0; cursor: pointer;" onchange="displayFileName()" onmouseover="displayFullFileName()" onmouseout="displayFileName()">
+              <label for="fileInput" class="InsertHere" style="width: 100%; height: 100%; color: black; font-size: 24px; font-family: Inter; font-weight: bold; text-align: center; line-height: 74px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; cursor: pointer;">Insert here</label>
+          </div>
+      </div>
+      
+      
+             
         <div class="Rectangle198" style="width: 152px; height: 45px; left: 1082px; top: 755px; position: absolute; background: #D9D9D9; border-radius: 40px"></div>
         <a href="#" class="Start" style="width: 132px; height: 34px; left: 1131px; top: 766px; position: absolute; color: black; font-size: 19px; font-family: Inter; font-weight: 400; word-wrap: break-word; text-decoration: none;">
             Start
