@@ -1,0 +1,46 @@
+.group_hover :hover {
+    color : #003B8C !important;
+    cursor: pointer;
+}
+
+.disappear {
+    display: none;
+}
+
+.choise:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.Ellipse46:hover {
+    opacity: 0.5;
+}
+
+.Ellipse47:hover {
+    opacity: 0.5;
+}
+
+  
+  /* Định nghĩa hiệu ứng biến mất và xuất hiện */
+  .fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+  }
+  
+  .fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+  }
+
+
+.appear {
+    opacity: 1;
+}
+
+.GetExplanation-btn:hover {
+    font-weight: 700 !important;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+  
