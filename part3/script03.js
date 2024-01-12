@@ -33,13 +33,13 @@ fetch('../data_file/Quiz.txt')
                         dataQuestion['answer1'] = Datas[i].trim();
                         break;
                     case 2:
-                        dataQuestion['answer2'] = Datas[i].trim();
+                        dataQuestion['answer4'] = Datas[i].trim();
                         break;
                     case 3:
                         dataQuestion['answer3'] = Datas[i].trim();
                         break;
                     case 4:
-                        dataQuestion['answer4'] = Datas[i].trim();
+                        dataQuestion['answer2'] = Datas[i].trim();
                         break;
                     default:
                         break;
