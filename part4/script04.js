@@ -45,3 +45,62 @@ function displayFullFileName() {
         label.innerHTML = fileInput.files[0].name;
     }
 }
+
+window.addEventListener("keydown", function (event) {
+    if (event.defaultPrevented) {
+      return; // Do nothing if the event was already processed
+    }
+  
+    switch (event.key) {
+      case "Enter":
+        if (EnterYourPromtHere.value.trim() === '') {
+                // Thêm lớp CSS để đổi màu khung thành đỏ
+                EnterYourPromtHere.parentElement.classList.add('error-border');
+        }
+        else {
+            // Nếu có nội dung, xóa lớp CSS để khôi phục màu khung gốc
+            EnterYourPromtHere.parentElement.classList.remove('error-border');
+            window.location.href = 'https://www.facebook.com/tuonglai.toi.1/';
+        }
+        // code for "down arrow" key press.
+        break;
+      default:
+        return; // Quit when this doesn't handle the key event.
+    }
+  
+    // Cancel the default action to avoid it being handled twice
+    event.preventDefault();
+  }, true);
+
+  EnterYourPromtHere.addEventListener('focusout', function () {
+    if (EnterYourPromtHere.value.trim() === '') {
+       // Thêm lớp CSS để đổi màu khung thành đỏ
+       EnterYourPromtHere.parentElement.classList.add('error-border');
+    } else {
+        // Nếu có nội dung, xóa lớp CSS để khôi phục màu khung gốc
+        EnterYourPromtHere.parentElement.classList.remove('error-border');
+    }
+});
+
+Start.onclick = function(event) {
+    if (EnterYourPromtHere.value.trim() === '') {
+        event.preventDefault();
+    }
+    if (EnterYourPromtHere.value.trim() === '') {
+        // Thêm lớp CSS để đổi màu khung thành đỏ
+        EnterYourPromtHere.parentElement.classList.add('error-border');
+     } else {
+         // Nếu có nội dung, xóa lớp CSS để khôi phục màu khung gốc
+         EnterYourPromtHere.parentElement.classList.remove('error-border');
+     }
+}
+
+EnterYourPromtHere.addEventListener('input', function () {
+    if (EnterYourPromtHere.value.trim() === '') {
+        // Thêm lớp CSS để đổi màu khung thành đỏ
+        EnterYourPromtHere.classList.add('error-border');
+    } else {
+        // Nếu có nội dung, xóa lớp CSS để khôi phục màu khung gốc
+        EnterYourPromtHere.classList.remove('error-border');
+    }
+});
