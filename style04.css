@@ -28,6 +28,7 @@ body {
 
 .Start:hover {
    opacity: 0.7;
+   cursor: pointer;
 }
 .Start li {
     color: black !important;
