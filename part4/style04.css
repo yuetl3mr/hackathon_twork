@@ -41,4 +41,6 @@ body {
 .disappear {
     display: none !important;
 }
-  
+.error-border {
+    border: 2px solid red;
+}
