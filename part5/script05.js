@@ -233,4 +233,3 @@ fetch('../data_file/flashcard_data.txt')
    }, true);
   })
 .catch(error => console.log(error));
-

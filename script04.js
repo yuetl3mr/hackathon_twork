@@ -59,7 +59,7 @@ window.addEventListener("keydown", function (event) {
         else {
             // Nếu có nội dung, xóa lớp CSS để khôi phục màu khung gốc
             EnterYourPromtHere.parentElement.classList.remove('error-border');
-            window.location.href = 'http://127.0.0.1:5500/part5/index05.html';
+            window.location.href = 'http://127.0.0.1:5500/index05.html';
         }
         // code for "down arrow" key press.
         break;
@@ -107,11 +107,10 @@ EnterYourPromtHere.addEventListener('input', function () {
     }
 });
 
-
 function buildData(data) {
-    const { OpenAIClient, AzureKeyCredential } = require("@azure/openai");
-    const endpoint = "https://sunhackathon18.openai.azure.com"
-    const azureApiKey = "6dfa1da1a2ad4165b1ba1e7b0d60b6fe"
+    const { OpenAIClient, AzureKeyCredential } = require('@azure/openai');
+    const endpoint = 'https://sunhackathon18.openai.azure.com'
+    const azureApiKey = '6dfa1da1a2ad4165b1ba1e7b0d60b6fe'
     let random = Math.random();
     userInput = `Tạo cho tôi ${random} flashcards ${data} với form như thế này chú ý định nghĩa bằng tiếng việt và phải siêu ngắn gọn : "Thuật ngữ - Định nghĩa"`; // Input text ở đây 
     const messages = [
@@ -126,7 +125,7 @@ function buildData(data) {
         for (const choice of result.choices) {
         ourData = ourData + choice.message.content;
         }
-        uppdateData(ourData);
+        // uppdateData(ourData);
     }
     
     main().catch((err) => {
@@ -134,8 +133,8 @@ function buildData(data) {
     });
     module.exports = { main };
 }
-
 function uppdateData(data) {
+    
     fetch('../data_file/flashcard_data.txt', {
     method: 'PUT', // Use the PUT method to overwrite data in the file
     headers: {
@@ -147,7 +146,7 @@ function uppdateData(data) {
         if (response.ok) {
         console.log('Data has been written to the file flashcard_data.txt');
         } else {
-        console.error('Error writing data to the file:', response.status);
+        // console.error('Error writing data to the file:', response.status);
         }
     })
     .catch(error => console.error('Error writing data to the file:', error));
