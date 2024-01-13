@@ -47837,7 +47837,6 @@ function buildData(data) {
     const messages = [
         { role: "user", content: userInput },
     ];  
-    
     async function main() {
         const client = new OpenAIClient(endpoint, new AzureKeyCredential(azureApiKey));
         const deploymentId = "GPT35TURBO";
