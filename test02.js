@@ -47939,13 +47939,6 @@ function outData(data) {
   currentText[0] = 1;
   nextPage.innerText = currentText.join('/');
 
-  function wait(ms){
-    var start = new Date().getTime();
-    var end = start;
-    while(end < start + ms) {
-      end = new Date().getTime();
-   }
- }
 
   Ellipse46.onclick = function() {
       var textElement = document.querySelector(".nextPage");
@@ -48078,20 +48071,20 @@ function outData(data) {
                   currentText[0] = parseInt(currentText[0]) + 1;
                   nextPage.innerText = currentText.join('/');
                 }
-                if(currentText[0] <= questions.length) {
+                if(currentText[0] < questions.length) {
                     Question.innerText = questions[currentText[0] - 1].nameQuestion;
                     Answer1.innerText = questions[currentText[0] - 1].answer1;
                     Answer2.innerText = questions[currentText[0] - 1].answer2;
                     Answer3.innerText = questions[currentText[0] - 1].answer3;
                     Answer4.innerText = questions[currentText[0] - 1].answer4;
                 }
+                else {
+                    AlSupport.classList.add("disappear");
+                    select.classList.add("disappear");
+                    Questions.classList.remove("disappear");
+                    Question.innerText =  "THE TEST HAS BEEN COMPLETED !";
+                }
               } , 1200)
-          }
-          if(currentText[0] > questions.length) {
-              setTimeout(() => {
-                  select.classList.add("disappear");
-                  Question.innerText =  "THE TEST HAS BEEN COMPLETED !";
-              }, 500);
           }
       };
       
