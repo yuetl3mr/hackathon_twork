@@ -47854,13 +47854,13 @@ window.addEventListener("keydown", function (event) {
     const endpoint = 'https://sunhackathon18.openai.azure.com'
     const azureApiKey = '6dfa1da1a2ad4165b1ba1e7b0d60b6fe'
     let num = Math.round(data.length / 1000 + 10 , 0);
-    const userInput = `Tạo cho tôi ${num} câu hỏi trắc nghiệm (có 4 đáp án a, b, c, d) dựa theo data / yêu cầu sau [${data}]. Lưu ý ngôn ngữ tiếng việt và phải theo form sau : Câu hỏi/n Đáp án a/n Đáp án b/n Đáp án c/n Đáp án d/n Đáp án đúng(a, b, c, d)/n Giải thích/n`;
+    const userInput = `Tạo cho tôi ${num} câu hỏi trắc nghiệm (có 4 đáp án a, b, c, d) dựa theo data / yêu cầu sau [${data}]. Lưu ý ngôn ngữ tiếng việt và hãy trả lời chính xác theo form sau : Câu hỏi/n Đáp án a/n Đáp án b/n Đáp án c/n Đáp án d/n Đáp án đúng (trong a, b, c, d)/n Giải thích đáp án đúng/n`;
     const messages = [
         { role: "user", content: userInput },
     ];  
     async function main() {
         const client = new OpenAIClient(endpoint, new AzureKeyCredential(azureApiKey));
-        const deploymentId = "GPT35TURBO16K";
+        const deploymentId = "GPT35TURBO";
         let ourData = "";
         const result = await client.getChatCompletions(deploymentId, messages);
         for (const choice of result.choices) {
