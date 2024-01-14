@@ -47853,7 +47853,7 @@ window.addEventListener("keydown", function (event) {
     const endpoint = 'https://sunhackathon18.openai.azure.com'
     const azureApiKey = '6dfa1da1a2ad4165b1ba1e7b0d60b6fe'
     let num = 10;
-    const userInput = `Tạo cho tôi ${num} câu hỏi trắc nghiệm dựa theo data / yêu cầu sau [${data}]. Lưu ý ngôn ngữ tiếng việt và phải theo form sau : Câu hỏi/n Đáp án a/n Đáp án b/n Đáp án c/n Đáp án d/n Đáp án đúng/n Giải thích/n`;
+    const userInput = `Tạo cho tôi ${num} câu hỏi trắc nghiệm dựa theo data / yêu cầu sau [${data}]. Lưu ý ngôn ngữ tiếng việt và phải theo form sau : Câu hỏi/n Đáp án a/n Đáp án b/n Đáp án c/n Đáp án d/n Đáp án đúng(a, b, c, d)/n Giải thích/n`;
     const messages = [
         { role: "user", content: userInput },
     ];  
