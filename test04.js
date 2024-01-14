@@ -47851,8 +47851,8 @@ function buildData(data) {
     const { OpenAIClient, AzureKeyCredential } = require('@azure/openai');
     const endpoint = 'https://sunhackathon18.openai.azure.com'
     const azureApiKey = '6dfa1da1a2ad4165b1ba1e7b0d60b6fe'
-    let random = Math.random() + 10;
-    userInput = `Tạo cho tôi ${random} flashcards với data / yêu cầu sau :[ ${data} ]. Chú ý định nghĩa bằng tiếng việt và phải siêu ngắn gọn và theo form sau "Thuật ngữ - Định nghĩa";`; // Input text ở đây 
+    let num = data.length / 1000 + 10;
+    userInput = `Tạo cho tôi ${num} flashcards với data / yêu cầu sau :[ ${data} ]. Chú ý định nghĩa bằng tiếng việt và phải siêu ngắn gọn và theo form sau "Thuật ngữ - Định nghĩa";`; // Input text ở đây 
     const messages = [
         { role: "user", content: userInput },
     ];  
