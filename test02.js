@@ -47726,11 +47726,13 @@ const nextPage = document.querySelector(".nextPage");
 const Questions = document.querySelector(".Questions");
 const Main_1 = document.querySelector(".Main_1");
 const Main_2 = document.querySelector(".Main_2");
+const NovaAiSExplanation = document.querySelector(".NovaAiSExplanation");
 let questions = [];
 
-let correctAnswer = ["Thao" , "Thach" , "Hoang"];
+let correctAnswers = [];
 
 let answeredQuestions = [];
+let alExplantions = [];
 
 EnterYourPromtHere.classList.remove("disappear");
 Rectangle238.classList.add("disappear");
@@ -47754,6 +47756,7 @@ Document.onclick = function() {
     EnterYourPromtHere.classList.add("disappear");
     Rectangle238.classList.remove("disappear");
 };
+
 
 // Chỉnh tên file
 function displayFileName() {
@@ -47796,7 +47799,7 @@ Start.onclick = function(event) {
      } else {
          // Nếu có nội dung, xóa lớp CSS để khôi phục màu khung gốc
          EnterYourPromtHere.parentElement.classList.remove('error-border');
-         buildData(EnterYourPromtHere.value);
+         buildData((EnterYourPromtHere.value).trim());
          Main_1.classList.add("disappear");
          Main_2.classList.remove("disappear");
          Questions.classList.remove('disappear');
@@ -47862,7 +47865,7 @@ window.addEventListener("keydown", function (event) {
         for (const choice of result.choices) {
         ourData = ourData + choice.message.content;
         }
-        console.log(ourData);
+        // console.log(ourData);
         outData(ourData);
     }
     
@@ -47878,32 +47881,45 @@ function outData(data) {
   let count = 0;
   let dataQuestion = {};
   for(let i = 0 ; i < Datas.length ; i++) {
-      if(count < 5) {
-          switch(count) {
-              case 0:
-                  dataQuestion['nameQuestion'] = Datas[i].trim();
-                  break;
-              case 1:
-                  dataQuestion['answer1'] = Datas[i].trim();
-                  break;
-              case 2:
-                  dataQuestion['answer4'] = Datas[i].trim();
-                  break;
-              case 3:
-                  dataQuestion['answer3'] = Datas[i].trim();
-                  break;
-              case 4:
-                  dataQuestion['answer2'] = Datas[i].trim();
-                  break;
-              default:
-                  break;
-          }
-          count++;
-      }
-      if(count === 5) {
-          count = 0;
-          questions.push(dataQuestion);
-          dataQuestion = {};
+      if(Datas[i] !== "") {
+        if(count < 7) {
+            switch(count) {
+                case 0:
+                    dataQuestion['nameQuestion'] = Datas[i].trim();
+                    break;
+                case 1:
+                    dataQuestion['answer1'] = Datas[i].trim();
+                    break;
+                case 2:
+                    dataQuestion['answer4'] = Datas[i].trim();
+                    break;
+                case 3:
+                    dataQuestion['answer3'] = Datas[i].trim();
+                    break;
+                case 4:
+                    dataQuestion['answer2'] = Datas[i].trim();
+                    break;
+                case 5:
+                    let correctAnswer = "";
+                    let position = Datas[i].indexOf(':');
+                    for(let j = position + 1; j < Datas[i].length ; ++j)
+                      correctAnswer = correctAnswer + Datas[i][j];
+                    console.log(correctAnswer.trim());
+                    correctAnswers.push(correctAnswer.trim());
+                    break;
+                case 6:
+                    console.log(Datas[i].trim());
+                    alExplantions.push(Datas[i].trim());
+                    break;
+                default:
+                    break;
+            }
+            count++;
+        }
+      } else if(Datas[i] === "") {
+        count = 0;
+        questions.push(dataQuestion);
+        dataQuestion = {};
       }
   }
   // console.log(questions);
@@ -47919,9 +47935,19 @@ function outData(data) {
   currentText[1] = questions.length + 1;
   nextPage.innerText = currentText.join('/');
 
+  function wait(ms){
+    var start = new Date().getTime();
+    var end = start;
+    while(end < start + ms) {
+      end = new Date().getTime();
+   }
+ }
+
   Ellipse46.onclick = function() {
       var textElement = document.querySelector(".nextPage");
       var currentText = textElement.innerText.split('/');
+      select.classList.remove("disappear");
+      AlSupport.classList.add("disappear");
       if(currentText[0] > questions.length) {
           select.classList.add("disappear");
           Question.innerText =  "THE TEST HAS BEEN COMPLETED !";
@@ -47943,13 +47969,13 @@ function outData(data) {
           // Check if the question has been answered
           if (answeredQuestions.includes(currentText[0])) {
               // Display the correct answer
-              if (correctAnswer[currentText[0] - 1] === Answer1.innerText) {
+              if (Answer1.innerText.includes(correctAnswers[currentText[0] - 1])) {
                   Answer1.previousElementSibling.classList.add("correct-choice");
-              } else if (correctAnswer[currentText[0] - 1] === Answer2.innerText) {
+              } else if (Answer2.innerText.includes(correctAnswers[currentText[0] - 1])) {
                   Answer2.previousElementSibling.classList.add("correct-choice");
-              } else if (correctAnswer[currentText[0] - 1] === Answer3.innerText) {
+              } else if (Answer3.innerText.includes(correctAnswers[currentText[0] - 1])) {
                   Answer3.previousElementSibling.classList.add("correct-choice");
-              } else if (correctAnswer[currentText[0] - 1] === Answer4.innerText) {
+              } else if (Answer4.innerText.includes(correctAnswers[currentText[0] - 1])) {
                   Answer4.previousElementSibling.classList.add("correct-choice");
               }
               
@@ -47970,8 +47996,10 @@ function outData(data) {
       var textElement = document.querySelector(".nextPage");
       // Get the current text content and split it into an array
       var currentText = textElement.innerText.split('/');
+      select.classList.remove("disappear");
+      AlSupport.classList.add("disappear");
       // Increment the numerator (first part of the array)
-      if(currentText[0] > 1) {  
+      if(parseInt(currentText[0]) > 1) {  
           currentText[0] = parseInt(currentText[0]) - 1;
           // Update the text content
           textElement.innerText = currentText.join('/');
@@ -47988,13 +48016,13 @@ function outData(data) {
           Answer4.innerText = questions[currentText[0] - 1].answer4;
           if (answeredQuestions.includes(currentText[0])) {
               // Display the correct answer
-              if (correctAnswer[currentText[0] - 1] === Answer1.innerText) {
+              if (Answer1.innerText.includes(correctAnswers[currentText[0] - 1])) {
                   Answer1.previousElementSibling.classList.add("correct-choice");
-              } else if (correctAnswer[currentText[0] - 1] === Answer2.innerText) {
+              } else if (Answer1.innerText.includes(correctAnswers[currentText[0] - 1])) {
                   Answer2.previousElementSibling.classList.add("correct-choice");
-              } else if (correctAnswer[currentText[0] - 1] === Answer3.innerText) {
+              } else if (Answer1.innerText.includes(correctAnswers[currentText[0] - 1])) {
                   Answer3.previousElementSibling.classList.add("correct-choice");
-              } else if (correctAnswer[currentText[0] - 1] === Answer4.innerText) {
+              } else if (Answer1.innerText.includes(correctAnswers[currentText[0] - 1])) {
                   Answer4.previousElementSibling.classList.add("correct-choice");
               }
           }
@@ -48009,18 +48037,21 @@ function outData(data) {
       choise.onclick = function() {
           var currentText = nextPage.innerText.split('/');
           const Rectangle133 = choise.querySelector(".Rectangle133");
-          if (!answeredQuestions.includes(parseInt(currentText[0])) && choise.innerText !== correctAnswer[currentText[0] - 1] && currentText[0] <= questions.length) {
+          console.log(choise.innerText.indexOf(correctAnswers[currentText[0] - 1]) , typeof(choise.innerText) , typeof(correctAnswers[currentText[0] - 1]) , correctAnswers[currentText[0] - 1]);
+          if (!answeredQuestions.includes(parseInt(currentText[0])) && !choise.innerText.includes(correctAnswers[currentText[0] - 1]) && currentText[0] <= questions.length) {
               // Thêm hiệu ứng màu đỏ khi chọn sai
+              NovaAiSExplanation.innerText = alExplantions[currentText[0] - 1];
               Rectangle133.classList.add("incorrect-choice");
               
               // Biến mất chọn sai và xuất hiện chọn đúng
               Rectangle133.classList.add("fade-in");
+              wait(1000);
               setTimeout(() => {
                   Rectangle133.classList.remove("fade-in");
                   Rectangle133.classList.remove("incorrect-choice");
                   AlSupport.classList.remove("disappear");
                   select.classList.add("disappear");
-              }, 700);
+              }, 500);
               answeredQuestions.push(parseInt(currentText[0]));
           } else if (!answeredQuestions.includes(parseInt(currentText[0])) && currentText[0] <= questions.length) {
               // Chọn đúng
@@ -48028,20 +48059,16 @@ function outData(data) {
                   
                   // Thêm hiệu ứng màu xanh khi chọn đúng
                   Rectangle133.classList.add("correct-choice");
-                  
-                  // Biến mất chọn đúng và xuất hiện chọn sai
                   Rectangle133.classList.add("fade-in");
+                  wait(2000);
                   setTimeout(() => {
                       Rectangle133.classList.remove("fade-in");
-                  }, 500);
-                  setTimeout(() => {
                       Rectangle133.classList.remove("correct-choice");
-                  }, 700);
-      
+                  }, 2000);
                   // Đánh dấu là đã trả lời cho câu hỏi này
                   answeredQuestions.push(parseInt(currentText[0]));
               }
-      
+              wait(5000);
               if (currentText[0] <= questions.length) {
                   currentText[0] = parseInt(currentText[0]) + 1;
                   nextPage.innerText = currentText.join('/');
@@ -48102,6 +48129,8 @@ function outData(data) {
       var textElement = document.querySelector(".nextPage");
       // Get the current text content and split it into an array
       var currentText = textElement.innerText.split('/');
+      select.classList.remove("disappear");
+      AlSupport.classList.add("disappear");
       // Increment the numerator (first part of the array)
       if(currentText[0] > 1) {  
           currentText[0] = parseInt(currentText[0]) - 1;
@@ -48120,13 +48149,13 @@ function outData(data) {
           Answer4.innerText = questions[currentText[0] - 1].answer4;
           if (answeredQuestions.includes(currentText[0])) {
               // Display the correct answer
-              if (correctAnswer[currentText[0] - 1] === Answer1.innerText) {
+              if (Answer1.innerText.includes(correctAnswers[currentText[0] - 1])) {
                   Answer1.previousElementSibling.classList.add("correct-choice");
-              } else if (correctAnswer[currentText[0] - 1] === Answer2.innerText) {
+              } else if (Answer2.innerText.includes(correctAnswers[currentText[0] - 1])) {
                   Answer2.previousElementSibling.classList.add("correct-choice");
-              } else if (correctAnswer[currentText[0] - 1] === Answer3.innerText) {
+              } else if (Answer3.innerText.includes(correctAnswers[currentText[0] - 1])) {
                   Answer3.previousElementSibling.classList.add("correct-choice");
-              } else if (correctAnswer[currentText[0] - 1] === Answer4.innerText) {
+              } else if (Answer4.innerText.includes(correctAnswers[currentText[0] - 1])) {
                   Answer4.previousElementSibling.classList.add("correct-choice");
               }
           }
@@ -48139,6 +48168,8 @@ function outData(data) {
           // code for "right arrow" key press.
           var textElement = document.querySelector(".nextPage");
           var currentText = textElement.innerText.split('/');
+          select.classList.remove("disappear");
+          AlSupport.classList.add("disappear");
           if(currentText[0] > questions.length) {
               select.classList.add("disappear");
               Question.innerText =  "THE TEST HAS BEEN COMPLETED !";
@@ -48161,13 +48192,13 @@ function outData(data) {
               // Check if the question has been answered
               if (answeredQuestions.includes(currentText[0])) {
                   // Display the correct answer
-                  if (correctAnswer[currentText[0] - 1] === Answer1.innerText) {
+                  if (Answer1.innerText.includes(correctAnswers[currentText[0] - 1])) {
                       Answer1.previousElementSibling.classList.add("correct-choice");
-                  } else if (correctAnswer[currentText[0] - 1] === Answer2.innerText) {
+                  } else if (Answer2.innerText.includes(correctAnswers[currentText[0] - 1])) {
                       Answer2.previousElementSibling.classList.add("correct-choice");
-                  } else if (correctAnswer[currentText[0] - 1] === Answer3.innerText) {
+                  } else if (Answer3.innerText.includes(correctAnswers[currentText[0] - 1])) {
                       Answer3.previousElementSibling.classList.add("correct-choice");
-                  } else if (correctAnswer[currentText[0] - 1] === Answer4.innerText) {
+                  } else if (Answer4.innerText.includes(correctAnswers[currentText[0] - 1])) {
                       Answer4.previousElementSibling.classList.add("correct-choice");
                   }
                   
