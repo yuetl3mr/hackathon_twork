@@ -47883,23 +47883,23 @@ function outData(data) {
   for(let i = 0 ; i < Datas.length ; i++) {
       if(Datas[i] !== "") {
         if(count < 7) {
-            switch(count) {
-                case 0:
-                    dataQuestion['nameQuestion'] = Datas[i].trim();
-                    break;
-                case 1:
-                    dataQuestion['answer1'] = Datas[i].trim();
-                    break;
-                case 2:
-                    dataQuestion['answer4'] = Datas[i].trim();
-                    break;
-                case 3:
-                    dataQuestion['answer3'] = Datas[i].trim();
-                    break;
-                case 4:
-                    dataQuestion['answer2'] = Datas[i].trim();
-                    break;
-                case 5:
+          switch(count) {
+              case 0:
+                  dataQuestion['nameQuestion'] = Datas[i].trim();
+                  break;
+              case 1:
+                  dataQuestion['answer1'] = Datas[i].trim();
+                  break;
+              case 2:
+                  dataQuestion['answer4'] = Datas[i].trim();
+                  break;
+              case 3:
+                  dataQuestion['answer3'] = Datas[i].trim();
+                  break;
+              case 4:
+                  dataQuestion['answer2'] = Datas[i].trim();
+                  break;
+case 5:
                     let correctAnswer = "";
                     let position = Datas[i].indexOf(':');
                     for(let j = position + 1; j < Datas[i].length ; ++j)
@@ -47911,15 +47911,15 @@ function outData(data) {
                     console.log(Datas[i].trim());
                     alExplantions.push(Datas[i].trim());
                     break;
-                default:
-                    break;
-            }
-            count++;
-        }
+              default:
+                  break;
+          }
+          count++;
+      }
       } else if(Datas[i] === "") {
-        count = 0;
-        questions.push(dataQuestion);
-        dataQuestion = {};
+          count = 0;
+          questions.push(dataQuestion);
+          dataQuestion = {};
       }
   }
   // console.log(questions);
@@ -47946,7 +47946,7 @@ function outData(data) {
   Ellipse46.onclick = function() {
       var textElement = document.querySelector(".nextPage");
       var currentText = textElement.innerText.split('/');
-      select.classList.remove("disappear");
+select.classList.remove("disappear");
       AlSupport.classList.add("disappear");
       if(currentText[0] > questions.length) {
           select.classList.add("disappear");
@@ -47996,7 +47996,7 @@ function outData(data) {
       var textElement = document.querySelector(".nextPage");
       // Get the current text content and split it into an array
       var currentText = textElement.innerText.split('/');
-      select.classList.remove("disappear");
+select.classList.remove("disappear");
       AlSupport.classList.add("disappear");
       // Increment the numerator (first part of the array)
       if(parseInt(currentText[0]) > 1) {  
@@ -48040,12 +48040,12 @@ function outData(data) {
           console.log(choise.innerText.indexOf(correctAnswers[currentText[0] - 1]) , typeof(choise.innerText) , typeof(correctAnswers[currentText[0] - 1]) , correctAnswers[currentText[0] - 1]);
           if (!answeredQuestions.includes(parseInt(currentText[0])) && !choise.innerText.includes(correctAnswers[currentText[0] - 1]) && currentText[0] <= questions.length) {
               // Thêm hiệu ứng màu đỏ khi chọn sai
-              NovaAiSExplanation.innerText = alExplantions[currentText[0] - 1];
+NovaAiSExplanation.innerText = alExplantions[currentText[0] - 1];
               Rectangle133.classList.add("incorrect-choice");
               
               // Biến mất chọn sai và xuất hiện chọn đúng
               Rectangle133.classList.add("fade-in");
-              wait(1000);
+wait(1000);
               setTimeout(() => {
                   Rectangle133.classList.remove("fade-in");
                   Rectangle133.classList.remove("incorrect-choice");
@@ -48059,16 +48059,16 @@ function outData(data) {
                   
                   // Thêm hiệu ứng màu xanh khi chọn đúng
                   Rectangle133.classList.add("correct-choice");
-                  Rectangle133.classList.add("fade-in");
-                  wait(2000);
+                                    Rectangle133.classList.add("fade-in");
+wait(2000);
                   setTimeout(() => {
                       Rectangle133.classList.remove("fade-in");
-                      Rectangle133.classList.remove("correct-choice");
+                                        Rectangle133.classList.remove("correct-choice");
                   }, 2000);
-                  // Đánh dấu là đã trả lời cho câu hỏi này
+                        // Đánh dấu là đã trả lời cho câu hỏi này
                   answeredQuestions.push(parseInt(currentText[0]));
               }
-              wait(5000);
+      wait(5000);
               if (currentText[0] <= questions.length) {
                   currentText[0] = parseInt(currentText[0]) + 1;
                   nextPage.innerText = currentText.join('/');
@@ -48129,7 +48129,7 @@ function outData(data) {
       var textElement = document.querySelector(".nextPage");
       // Get the current text content and split it into an array
       var currentText = textElement.innerText.split('/');
-      select.classList.remove("disappear");
+select.classList.remove("disappear");
       AlSupport.classList.add("disappear");
       // Increment the numerator (first part of the array)
       if(currentText[0] > 1) {  
@@ -48168,7 +48168,7 @@ function outData(data) {
           // code for "right arrow" key press.
           var textElement = document.querySelector(".nextPage");
           var currentText = textElement.innerText.split('/');
-          select.classList.remove("disappear");
+select.classList.remove("disappear");
           AlSupport.classList.add("disappear");
           if(currentText[0] > questions.length) {
               select.classList.add("disappear");
