@@ -47995,44 +47995,44 @@ function outData(data) {
 
 
   Ellipse47.onclick  = function() {
-      // Get the element with the class '7'
-      var textElement = document.querySelector(".nextPage");
-      // Get the current text content and split it into an array
-      var currentText = textElement.innerText.split('/');
-      select.classList.remove("disappear");
-      AlSupport.classList.add("disappear");
-      // Increment the numerator (first part of the array)
-      if(parseInt(currentText[0]) > 1) {  
-          currentText[0] = parseInt(currentText[0]) - 1;
-          // Update the text content
-          textElement.innerText = currentText.join('/');
-          choises.forEach(choise => {
-              const Rectangle133 = choise.querySelector(".Rectangle133");
-              Rectangle133.classList.remove("correct-choice");
-          })
-      }
-      if(currentText[0] <= questions.length) {
-          Question.innerText = questions[currentText[0] - 1].nameQuestion;
-          Answer1.innerText = questions[currentText[0] - 1].answer1;
-          Answer2.innerText = questions[currentText[0] - 1].answer2;
-          Answer3.innerText = questions[currentText[0] - 1].answer3;
-          Answer4.innerText = questions[currentText[0] - 1].answer4;
-          if (answeredQuestions.includes(currentText[0])) {
-              // Display the correct answer
-              if (Answer1.innerText.includes(correctAnswers[currentText[0] - 1])) {
-                  Answer1.previousElementSibling.classList.add("correct-choice");
-              } else if (Answer1.innerText.includes(correctAnswers[currentText[0] - 1])) {
-                  Answer2.previousElementSibling.classList.add("correct-choice");
-              } else if (Answer1.innerText.includes(correctAnswers[currentText[0] - 1])) {
-                  Answer3.previousElementSibling.classList.add("correct-choice");
-              } else if (Answer1.innerText.includes(correctAnswers[currentText[0] - 1])) {
-                  Answer4.previousElementSibling.classList.add("correct-choice");
-              }
-          }
-      }
-
-      AlSupport.classList.add("disappear");
-      select.classList.remove("disappear");
+        // Get the element with the class '7'
+        var textElement = document.querySelector(".nextPage");
+        // Get the current text content and split it into an array
+        var currentText = textElement.innerText.split('/');
+        select.classList.remove("disappear");
+        AlSupport.classList.add("disappear");
+        // Increment the numerator (first part of the array)
+        if(currentText[0] > 1) {  
+            currentText[0] = parseInt(currentText[0]) - 1;
+            // Update the text content
+            textElement.innerText = currentText.join('/');
+            choises.forEach(choise => {
+                const Rectangle133 = choise.querySelector(".Rectangle133");
+                Rectangle133.classList.remove("correct-choice");
+            })
+        }
+        if(currentText[0] <= questions.length) {
+            Question.innerText = questions[currentText[0] - 1].nameQuestion;
+            Answer1.innerText = questions[currentText[0] - 1].answer1;
+            Answer2.innerText = questions[currentText[0] - 1].answer2;
+            Answer3.innerText = questions[currentText[0] - 1].answer3;
+            Answer4.innerText = questions[currentText[0] - 1].answer4;
+            if (answeredQuestions.includes(currentText[0])) {
+                // Display the correct answer
+                if (Answer1.innerText.includes(correctAnswers[currentText[0] - 1])) {
+                    Answer1.previousElementSibling.classList.add("correct-choice");
+                } else if (Answer2.innerText.includes(correctAnswers[currentText[0] - 1])) {
+                    Answer2.previousElementSibling.classList.add("correct-choice");
+                } else if (Answer3.innerText.includes(correctAnswers[currentText[0] - 1])) {
+                    Answer3.previousElementSibling.classList.add("correct-choice");
+                } else if (Answer4.innerText.includes(correctAnswers[currentText[0] - 1])) {
+                    Answer4.previousElementSibling.classList.add("correct-choice");
+                }
+            }
+        }
+  
+        AlSupport.classList.add("disappear");
+        select.classList.remove("disappear");
   }
 
 
