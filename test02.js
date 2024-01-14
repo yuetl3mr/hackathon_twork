@@ -47936,6 +47936,7 @@ function outData(data) {
   Answer4.innerText = questions[0].answer4;
   var currentText = nextPage.innerText.split('/');
   currentText[1] = questions.length + 1;
+  currentText[0] = 1;
   nextPage.innerText = currentText.join('/');
 
   function wait(ms){

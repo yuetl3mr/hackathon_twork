@@ -47724,6 +47724,7 @@ const GetExplanation_btn = document.querySelector(".GetExplanation-btn");
 const Explanationinfo = document.querySelector(".Explanationinfo");
 const Main_1 = document.querySelector(".Main_1");
 const Main_2 = document.querySelector(".Main_2");
+const Explanation = document.querySelector(".Explanation");
 let questions = [];
 let explanations = [];
 EnterYourPromtHere.classList.remove("disappear");
@@ -47796,6 +47797,11 @@ window.addEventListener("keydown", function (event) {
         }
         else if(!Main_2.classList.contains("disappear")) {
           if(Questions.classList.contains("disappear")) {
+            var textElement = document.querySelector(".nextPage");
+            var currentText = textElement.innerText.split('/');
+            if(currentText[0] <= questions.length) {
+               Explanation.innerText = explanations[currentText[0] - 1];
+            }
             Explanationinfo.classList.remove("disappear");
             GetExplanation_btn.classList.add("appear");
           }
@@ -47842,7 +47848,6 @@ EnterYourPromtHere.addEventListener('input', function () {
         EnterYourPromtHere.classList.add('error-border');
     } else {
         // Nếu có nội dung, xóa lớp CSS để khôi phục màu khung gốc
-        console.log(1);
         EnterYourPromtHere.classList.remove('error-border');
     }
 });
@@ -47852,7 +47857,7 @@ function buildData(data) {
     const endpoint = 'https://sunhackathon18.openai.azure.com'
     const azureApiKey = '6dfa1da1a2ad4165b1ba1e7b0d60b6fe'
     let num = data.length / 1000 + 10;
-    userInput = `Tạo cho tôi ${num} flashcards với data / yêu cầu sau :[ ${data} ]. Chú ý định nghĩa bằng tiếng việt và phải siêu ngắn gọn và theo form sau "Thuật ngữ - Định nghĩa";`; // Input text ở đây 
+    userInput = `Tạo cho tôi ${num} flashcards với data / yêu cầu sau :[ ${data} ]. Chú ý định nghĩa bằng tiếng việt và phải siêu ngắn gọn và theo form sau "Thuật ngữ - Định nghĩa - giải thích";`; // Input text ở đây 
     const messages = [
         { role: "user", content: userInput },
     ];  
@@ -47875,24 +47880,36 @@ function buildData(data) {
 }
 
 function outData(ourData) {
-  console.log(ourData);
   const Datas = ourData.split('\n');
   // Xử lý dữ liệu ở đây
     for(var i = 0 ; i < Datas.length ; ++i) {
       let Data = Datas[i].trim();
-      let position = Data.indexOf('-');
-      let dataNameQuestion = "";
-      let dataAnswer = "";
-      for(let i = 0 ; i < position ; ++i) 
-        dataNameQuestion = dataNameQuestion + Data[i];
-    for(let i = position + 1 ; i < Data.length  ; ++i)
-        dataAnswer = dataAnswer + Data[i];
-      let dataQuestion = {
-        nameQuestion : dataNameQuestion,
-        answer: dataAnswer
+      if(Data !== "") {
+        let position = Data.indexOf('-');
+        let dataNameQuestion = "";
+        let dataAnswer = "";
+        let explanation = "";
+        for(let j = 0 ; j < position ; ++j) 
+        dataNameQuestion = dataNameQuestion + Data[j];
+        let j = position + 1;
+        while(j < Data.length && Data[j] !== '-') {
+            dataAnswer = dataAnswer + Data[j];
+                  j++;
+        }
+        j++;
+        while(j < Data.length) {
+          explanation = explanation + Data[j];
+          j++;
+        }
+        let dataQuestion = {
+            nameQuestion : dataNameQuestion,
+            answer: dataAnswer
+        }
+        console.log(dataQuestion);
+        questions.push(dataQuestion);
+        explanations.push(explanation);
       }
-      questions.push(dataQuestion);
-}
+    }
 Questions.classList.remove("disappear");
 Answers.classList.add("disappear");   
 Explanationinfo.classList.add("disappear");
@@ -47901,6 +47918,7 @@ Question.textContent= questions[0].nameQuestion;
 Answer.innerText = questions[0].answer;
 var currentText = nextPage.innerText.split('/');
 currentText[1] = questions.length + 1;
+currentText[0] = 1;
 nextPage.innerText = currentText.join('/');
 
 //  for(let i = 0 ; i < questions.length ; ++i)
@@ -48002,6 +48020,11 @@ Question.onclick = function() {
 }
 
 GetExplanation_btn.onclick = function() {
+  var textElement = document.querySelector(".nextPage");
+  var currentText = textElement.innerText.split('/');
+  if(currentText[0] <= questions.length) {
+      Explanation.innerText = explanations[currentText[0] - 1];
+  }
    Explanationinfo.classList.remove("disappear");
    GetExplanation_btn.classList.add("appear");
 }
