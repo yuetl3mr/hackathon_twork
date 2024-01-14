@@ -47883,7 +47883,8 @@ function outData(data) {
   for(let i = 0 ; i < Datas.length ; i++) {
       if(Datas[i] !== "") {
         if(count < 7) {
-            switch(count) {
+            if(!(i == 0 && Datas[i].length < 15)) {
+              switch(count) {
                 case 0:
                     dataQuestion['nameQuestion'] = Datas[i].trim();
                     break;
@@ -47913,8 +47914,10 @@ function outData(data) {
                     break;
                 default:
                     break;
+              }
+              count++;
             }
-            count++;
+            
         }
       } else if(Datas[i] === "") {
         count = 0;
