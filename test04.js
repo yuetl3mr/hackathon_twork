@@ -47857,7 +47857,7 @@ function buildData(data) {
     const endpoint = 'https://sunhackathon18.openai.azure.com'
     const azureApiKey = '6dfa1da1a2ad4165b1ba1e7b0d60b6fe'
     let num = Math.round(data.length / 1000 + 10 , 0);
-    userInput = `Tạo cho tôi ${num} flashcards với data / yêu cầu sau :[ ${data} ]. Chú ý định nghĩa bằng tiếng việt và phải siêu ngắn gọn và theo form sau "Thuật ngữ - Định nghĩa - giải thích";`; // Input text ở đây 
+    userInput = `Tạo cho tôi ${num} flashcards và giải thích với data / yêu cầu sau :[ ${data} ]. Chú ý định nghĩa bằng tiếng việt và phải siêu ngắn gọn và vui lòng trả lời phải chính xác có 3 thành phần theo form sau "Thuật ngữ - Định nghĩa - Giải thích định nghĩa";`; // Input text ở đây 
     const messages = [
         { role: "user", content: userInput },
     ];  
