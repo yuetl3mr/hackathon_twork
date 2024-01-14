@@ -1,7 +1,3 @@
-body {
-    background-color: #FAEED1;
-    font-family: monospace;
-}
 
 .group_hover :hover {
     color : #003B8C !important;
