@@ -48045,7 +48045,6 @@ function outData(data) {
               
               // Biến mất chọn sai và xuất hiện chọn đúng
               Rectangle133.classList.add("fade-in");
-              wait(1000);
               setTimeout(() => {
                   Rectangle133.classList.remove("fade-in");
                   Rectangle133.classList.remove("incorrect-choice");
@@ -48082,7 +48081,7 @@ function outData(data) {
                     Answer3.innerText = questions[currentText[0] - 1].answer3;
                     Answer4.innerText = questions[currentText[0] - 1].answer4;
                 }
-              } , 2000)
+              } , 1200)
           }
           if(currentText[0] > questions.length) {
               setTimeout(() => {
