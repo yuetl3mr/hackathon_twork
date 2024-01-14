@@ -48071,7 +48071,7 @@ function outData(data) {
                   currentText[0] = parseInt(currentText[0]) + 1;
                   nextPage.innerText = currentText.join('/');
                 }
-                if(currentText[0] < questions.length) {
+                if(currentText[0] <= questions.length) {
                     Question.innerText = questions[currentText[0] - 1].nameQuestion;
                     Answer1.innerText = questions[currentText[0] - 1].answer1;
                     Answer2.innerText = questions[currentText[0] - 1].answer2;
