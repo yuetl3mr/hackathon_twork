@@ -47725,6 +47725,7 @@ const Explanationinfo = document.querySelector(".Explanationinfo");
 const Main_1 = document.querySelector(".Main_1");
 const Main_2 = document.querySelector(".Main_2");
 let questions = [];
+let explanations = [];
 EnterYourPromtHere.classList.remove("disappear");
 Rectangle238.classList.add("disappear");
 Main_1.classList.remove("disappear");
@@ -47777,20 +47778,28 @@ window.addEventListener("keydown", function (event) {
   
     switch (event.key) {
       case "Enter":
-        if (EnterYourPromtHere.value.trim() === '') {
-                // Thêm lớp CSS để đổi màu khung thành đỏ
-                EnterYourPromtHere.parentElement.classList.add('error-border');
+        if(!Main_1.classList.contains("disappear")) {
+          if (EnterYourPromtHere.value.trim() === '' ) {
+                  // Thêm lớp CSS để đổi màu khung thành đỏ
+                  EnterYourPromtHere.parentElement.classList.add('error-border');
+          }
+          else {
+              // Nếu có nội dung, xóa lớp CSS để khôi phục màu khung gốc
+              EnterYourPromtHere.parentElement.classList.remove('error-border');
+              buildData(EnterYourPromtHere.value);
+              Main_1.classList.add("disappear");
+              Main_2.classList.remove("disappear");
+              Answers.classList.add("disappear");
+              Questions.classList.remove("disappear");
+              ;
+          }
         }
-        else {
-            // Nếu có nội dung, xóa lớp CSS để khôi phục màu khung gốc
-            EnterYourPromtHere.parentElement.classList.remove('error-border');
-            buildData(EnterYourPromtHere.value);
-            Main_1.classList.add("disappear");
-            Main_2.classList.remove("disappear");
-            Answers.classList.add("disappear");
-            Questions.classList.remove("disappear");
-            ;
-        }
+        else if(!Main_2.classList.contains("disappear")) {
+          if(Questions.classList.contains("disappear")) {
+            Explanationinfo.classList.remove("disappear");
+            GetExplanation_btn.classList.add("appear");
+          }
+        } 
         // code for "down arrow" key press.
         break;
       default:
@@ -47855,6 +47864,7 @@ function buildData(data) {
         for (const choice of result.choices) {
         ourData = ourData + choice.message.content;
         }
+        console.log(ourData);
         outData(ourData);
     }
     
@@ -48070,12 +48080,6 @@ window.addEventListener("keydown", function (event) {
        if(currentText[0] > questions.length) {
            Question.innerText =  "THE FLASHCARDS HAS BEEN COMPLETED !";
            Answer.classList.add("disppear");
-       }
-       break;
-     case "Enter":
-       if(Questions.classList.contains("disappear")) {
-           Explanationinfo.classList.remove("disappear");
-           GetExplanation_btn.classList.add("appear");
        }
        break;
      default:
