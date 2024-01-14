@@ -47833,6 +47833,7 @@ window.addEventListener("keydown", function (event) {
         else {
             // Nếu có nội dung, xóa lớp CSS để khôi phục màu khung gốc
             EnterYourPromtHere.parentElement.classList.remove('error-border');
+            buildData((EnterYourPromtHere.value).trim());
             Main_1.classList.add("disappear");
             Main_2.classList.remove("disappear");
             Questions.classList.remove('disappear');
@@ -47865,7 +47866,7 @@ window.addEventListener("keydown", function (event) {
         for (const choice of result.choices) {
         ourData = ourData + choice.message.content;
         }
-        // console.log(ourData);
+        console.log(ourData);
         outData(ourData);
     }
     
