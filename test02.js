@@ -48060,26 +48060,29 @@ function outData(data) {
                   // Thêm hiệu ứng màu xanh khi chọn đúng
                   Rectangle133.classList.add("correct-choice");
                   Rectangle133.classList.add("fade-in");
-                  wait(2000);
+                  // wait(1000);
+                  // Rectangle133.classList.remove("fade-in");
+                  // Rectangle133.classList.remove("correct-choice");
                   setTimeout(() => {
                       Rectangle133.classList.remove("fade-in");
                       Rectangle133.classList.remove("correct-choice");
-                  }, 2000);
+                  }, 1000);
                   // Đánh dấu là đã trả lời cho câu hỏi này
                   answeredQuestions.push(parseInt(currentText[0]));
               }
-              wait(5000);
-              if (currentText[0] <= questions.length) {
+              setTimeout(() => {
+                if (currentText[0] <= questions.length) {
                   currentText[0] = parseInt(currentText[0]) + 1;
                   nextPage.innerText = currentText.join('/');
-              }
-              if(currentText[0] <= questions.length) {
-                  Question.innerText = questions[currentText[0] - 1].nameQuestion;
-                  Answer1.innerText = questions[currentText[0] - 1].answer1;
-                  Answer2.innerText = questions[currentText[0] - 1].answer2;
-                  Answer3.innerText = questions[currentText[0] - 1].answer3;
-                  Answer4.innerText = questions[currentText[0] - 1].answer4;
-              }
+                }
+                if(currentText[0] <= questions.length) {
+                    Question.innerText = questions[currentText[0] - 1].nameQuestion;
+                    Answer1.innerText = questions[currentText[0] - 1].answer1;
+                    Answer2.innerText = questions[currentText[0] - 1].answer2;
+                    Answer3.innerText = questions[currentText[0] - 1].answer3;
+                    Answer4.innerText = questions[currentText[0] - 1].answer4;
+                }
+              } , 2000)
           }
           if(currentText[0] > questions.length) {
               setTimeout(() => {
